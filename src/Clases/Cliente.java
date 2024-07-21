@@ -1,7 +1,9 @@
 package Clases;
 
+import EstructurasDatos.CarritoDeCompras;
+
 public class Cliente extends Usuario {
-    CarritoCompras Carrito;
+    CarritoDeCompras Carrito;
     
      public Cliente(){
     }
