@@ -77,10 +77,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_sueldoBasico">
+        <Component class="javax.swing.JTextField" name="tf_secondLastName">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="200" width="160" height="-1"/>
+              <AbsoluteConstraints x="400" y="150" width="160" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -123,7 +123,7 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_dniKeyTyped"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value=" tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;            @Override&#xd;&#xa;            public void insertUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void removeUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void changedUpdate(DocumentEvent e) {&#xd;&#xa;                // Not needed for plain text components&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            private void handleTextChange() {&#xd;&#xa;                if (tf_dni.getText().length() == 8) {&#xd;&#xa;                    // Realiza la acci&#xf3;n deseada&#xd;&#xa;                    String DNI = tf_dni.getText();&#xd;&#xa;                    Trabajador usuariocondatosreniec = new Trabajador(Float.parseFloat(tf_sueldoBasico.getText()));&#xd;&#xa;                    new ConsultarDniWorker(DNI, usuariocondatosreniec).execute();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        });"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value=" tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;            @Override&#xd;&#xa;            public void insertUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void removeUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void changedUpdate(DocumentEvent e) {&#xd;&#xa;                // Not needed for plain text components&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            private void handleTextChange() {&#xd;&#xa;                if (tf_dni.getText().length() == 8) {&#xd;&#xa;                    // Realiza la acci&#xf3;n deseada&#xd;&#xa;                    String DNI = tf_dni.getText();&#xd;&#xa;                    String cargo= cb_cargo.getSelectedItem().toString();&#xd;&#xa;                    usuariocondatosreniec.setCargo(cargo);&#xd;&#xa;                    try {&#xd;&#xa;                     int sueldoBasico = Integer.parseInt(tf_sueldoBasico.getText());&#xd;&#xa;                        usuariocondatosreniec.setSueldoBasico(sueldoBasico);&#xd;&#xa;                    }catch (NumberFormatException e) {&#xd;&#xa;                     // Manejo de la excepci&#xf3;n: el campo est&#xe1; vac&#xed;o o no es un n&#xfa;mero v&#xe1;lido&#xd;&#xa;                     // Puedes mostrar un mensaje de error o realizar alguna otra acci&#xf3;n aqu&#xed;&#xd;&#xa;    &#xd;&#xa;                    }&#xd;&#xa;                    new ConsultarDniWorker(DNI, usuariocondatosreniec).execute();&#xd;&#xa;                    //por alguna razon no deja usar el metodo&#xd;&#xa;                    //informacionTrabajador(usuariocondatosreniec);&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        });"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -151,7 +151,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cb_cargo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
@@ -164,7 +164,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_cargoActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -252,10 +252,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_secondLastName">
+        <Component class="javax.swing.JTextField" name="tf_sueldoBasico">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="150" width="160" height="-1"/>
+              <AbsoluteConstraints x="400" y="200" width="160" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

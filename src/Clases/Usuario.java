@@ -1,5 +1,6 @@
 package Clases;
 public class Usuario {
+    String cargo;
     String DNI;
     int codigoVerificacion;
     String firstName;
@@ -8,7 +9,8 @@ public class Usuario {
     String firstLastName;
     String secondLastName;
     String nombreCompleto;
-    
+    public Usuario(){
+    }
     public String getNombreCompleto(){
         return nombres+" "+firstLastName+" "+secondLastName;
     }
@@ -16,7 +18,13 @@ public class Usuario {
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
-    
+     public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
      public String getDNI() {
         return DNI;
     }

@@ -1,23 +1,16 @@
 package Clases;
 public class Trabajador extends Usuario {
-    private float sueldoBasico;
-    private float asignacionFamiliar;
-    private float cts; // Compensación por Tiempo de Servicios
-    private float gratificaciones; // Gratificaciones de julio y diciembre
-    private float descuentosAFP; // Descuento por AFP
-    private float descuentosONP; // Descuento por ONP
-    private float seguroSalud; // Seguro de salud
+    float sueldoBasico;
+    float asignacionFamiliar;
+    float cts; // Compensación por Tiempo de Servicios
+    float gratificaciones; // Gratificaciones de julio y diciembre
+    float descuentosAFP; // Descuento por AFP
+    float descuentosONP; // Descuento por ONP
+    float seguroSalud; // Seguro de salud
 
-    // Constructor
-    public Trabajador( float sueldoBasico) {
-        this.sueldoBasico = sueldoBasico;
-        this.asignacionFamiliar = calcularAsignacionFamiliar();
-        this.cts = calcularCTS();
-        this.gratificaciones = calcularGratificaciones();
-        this.descuentosAFP = calcularDescuentosAFP();
-        this.descuentosONP = calcularDescuentosONP();
-        this.seguroSalud = calcularSeguroSalud();
-    }
+public Trabajador(){
+}    // Constructor
+   
 
     // Métodos para calcular los diferentes beneficios y descuentos
     private float calcularAsignacionFamiliar() {
@@ -57,6 +50,12 @@ public class Trabajador extends Usuario {
 
     public void setSueldoBasico(float sueldoBasico) {
         this.sueldoBasico = sueldoBasico;
+        this.asignacionFamiliar = calcularAsignacionFamiliar();
+        this.cts = calcularCTS();
+        this.gratificaciones = calcularGratificaciones();
+        this.descuentosAFP = calcularDescuentosAFP();
+        this.descuentosONP = calcularDescuentosONP();
+        this.seguroSalud = calcularSeguroSalud();
     }
 
     public float getAsignacionFamiliar() {
@@ -107,17 +106,13 @@ public class Trabajador extends Usuario {
         this.seguroSalud = seguroSalud;
     }
 
-    public String informacionTrabajador(Trabajador trabajador) {
-        
-        
-        
-        return "El empleado "+nombreCompleto+" identificado con el DNI "+
-                 DNI + "con sueldo basico de S/"+sueldoBasico+
-                " con asignacion familiar de" + asignacionFamiliar +
-                ", con cts=" + cts +
-                ", con gratificaciones=" + gratificaciones +
-                ", con descuentosAFP=" + descuentosAFP +
-                ", con descuentosONP=" + descuentosONP +
-                ", con seguroSalud=" + seguroSalud;
+    public static void informacionTrabajador(Trabajador trabajador) {
+            System.out.println("El empleado " + trabajador.nombreCompleto + " identificado con el DNI " + trabajador.DNI + " con cargo de " + trabajador.cargo);
+            System.out.println("con sueldo básico de S/" + trabajador.sueldoBasico + " con asignación familiar de " + trabajador.asignacionFamiliar +
+            ", con CTS=" + trabajador.cts + ", con gratificaciones=" + trabajador.gratificaciones);
+            System.out.println(", con descuentos AFP=" + trabajador.descuentosAFP +
+            ", con descuentos ONP=" + trabajador.descuentosONP +
+            ", con seguro de salud=" + trabajador.seguroSalud);
+                
     }
 }

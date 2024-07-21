@@ -6,12 +6,14 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.io.IOException;
 import Clases.Trabajador;
+import Clases.Usuario;
+import java.lang.Integer;
 import Conexion.ConsultasApiReniec;
 import javax.swing.SwingWorker;
 
 
 public class RegistroUsuario extends javax.swing.JFrame {
-
+    Trabajador usuariocondatosreniec = new Trabajador();
     
     public RegistroUsuario() {
         initComponents();
@@ -35,7 +37,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         protected void done() {
             tf_nombres.setText(usuariocondatosreniec.getNombres());
             tf_firstLastName.setText(usuariocondatosreniec.getFirstLastName());
-            tf_sueldoBasico.setText(usuariocondatosreniec.getSecondLastName());
+            tf_secondLastName.setText(usuariocondatosreniec.getSecondLastName());
         }
     }
     
@@ -46,20 +48,20 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        tf_sueldoBasico = new javax.swing.JTextField();
+        tf_secondLastName = new javax.swing.JTextField();
         tf_firstLastName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         tf_dni = new javax.swing.JTextField();
         tf_nombres = new javax.swing.JTextField();
         btn_guardarUsuario = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_cargo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tf_secondLastName = new javax.swing.JTextField();
+        tf_sueldoBasico = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -75,7 +77,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel6.setText("Sueldo Basico");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
-        jPanel1.add(tf_sueldoBasico, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 160, -1));
+        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 160, -1));
         jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
@@ -106,8 +108,19 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 if (tf_dni.getText().length() == 8) {
                     // Realiza la acción deseada
                     String DNI = tf_dni.getText();
-                    Trabajador usuariocondatosreniec = new Trabajador(Float.parseFloat(tf_sueldoBasico.getText()));
+                    String cargo= cb_cargo.getSelectedItem().toString();
+                    usuariocondatosreniec.setCargo(cargo);
+                    try {
+                        int sueldoBasico = Integer.parseInt(tf_sueldoBasico.getText());
+                        usuariocondatosreniec.setSueldoBasico(sueldoBasico);
+                    }catch (NumberFormatException e) {
+                        // Manejo de la excepción: el campo está vacío o no es un número válido
+                        // Puedes mostrar un mensaje de error o realizar alguna otra acción aquí
+
+                    }
                     new ConsultarDniWorker(DNI, usuariocondatosreniec).execute();
+                    //por alguna razon no deja usar el metodo
+                    //informacionTrabajador(usuariocondatosreniec);
                 }
             }
         });
@@ -132,13 +145,13 @@ public class RegistroUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(btn_guardarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
+        cb_cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cb_cargoActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 160, -1));
+        jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 160, -1));
 
         jLabel9.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel9.setText("DNI");
@@ -174,7 +187,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel11.setText("Apellido Materno");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
-        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 160, -1));
+        jPanel1.add(tf_sueldoBasico, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 160, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,17 +213,19 @@ public class RegistroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cb_cargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_cargoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cb_cargoActionPerformed
 
     private void btn_guardarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarUsuarioActionPerformed
     tf_dni.setText("");
     tf_nombres.setText("");
     tf_firstLastName.setText("");
+    tf_secondLastName.setText("");
     tf_sueldoBasico.setText("");
     tf_dni.requestFocus();
-    System.out.print("Usuario guardado");
+    System.out.println("Usuario guardado");
+    System.out.println();
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_guardarUsuarioActionPerformed
 
@@ -268,8 +283,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardarUsuario;
+    private javax.swing.JComboBox<String> cb_cargo;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
