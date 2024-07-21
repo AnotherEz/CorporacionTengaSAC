@@ -6,7 +6,7 @@ public class Usuario {
     String secondName;
     String firstLastName;
     String secondLastName;
-    
+    String RazonSocial;
     
     public static String GetNombreCompleto(Usuario usuario){
         String NombreCompleto=usuario.firstName+" "+ usuario.secondName+" "+usuario.firstLastName+" "+usuario.secondLastName;
@@ -65,15 +65,18 @@ public class Usuario {
     
     
     public static String[] NombresSeparados(String nombres) {
-        if (nombres == null || nombres.isEmpty()) {
-            return null;
-        }
-
-        String[] partes = nombres.split(" ");
-        if (partes.length != 2) {
-            return null; // La cadena no contiene exactamente dos palabras
-        }
-
-        return partes;
+    if (nombres == null || nombres.isEmpty()) {
+        return null;
     }
+
+    String[] partes = nombres.split(" ");
+    if (partes.length == 1) {
+        return new String[]{partes[0], ""};
+    } else if (partes.length == 2) {
+        return partes;
+    } else {
+        return new String[]{"null", "null"}; // La cadena contiene más de dos palabras
+    }
+}
+
 }

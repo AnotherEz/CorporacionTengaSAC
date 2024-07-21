@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package GIU;
 
-/**
- *
- * @author Eduardo Fernandez
- */
+import static Conexion.ConsultasApiReniec.consultarDni;
+import static Clases.Cliente.ImprimirDatosC;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.io.IOException;
+import Clases.Cliente;
+
+
 public class RegistroUsuario extends javax.swing.JFrame {
 
     /**
@@ -39,6 +39,9 @@ public class RegistroUsuario extends javax.swing.JFrame {
         tf_firstName = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -49,40 +52,104 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel4.setText("SEGUNDO NOMBRE");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 100, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 100, 20));
 
-        jLabel5.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
-        jLabel5.setText("DNI");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Source Code Pro", 0, 20)); // NOI18N
+        jLabel5.setText("TENGA S.A.C");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel6.setText("Apellido Materno");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
-        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 160, -1));
-        jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 160, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
+        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 160, -1));
+        jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel7.setText("PRIMER NOMBRE");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel8.setText("Apellido Paterno");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
 
+        tf_dni.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                handleTextChange();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                handleTextChange();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // Not needed for plain text components
+            }
+
+            private void handleTextChange() {
+                if (tf_dni.getText().length() == 8) {
+                    // Realiza la acción deseada
+                    System.out.println("El campo de texto tf_dni tiene 8 caracteres.");
+                    // Puedes agregar aquí cualquier acción que desees realizar
+                    String DNI = tf_dni.getText();
+                    Cliente clientecreadoconeldni = new Cliente();
+
+                    try {
+                        consultarDni(DNI, clientecreadoconeldni);
+                        ImprimirDatosC(clientecreadoconeldni);
+                        tf_firstName.setText(clientecreadoconeldni.getFirstName());
+                        tf_secondName.setText(clientecreadoconeldni.getSecondName());
+                        tf_firstLastName.setText(clientecreadoconeldni.getFirstLastName()); // Asegúrate de que este método existe
+                        tf_secondLastName.setText(clientecreadoconeldni.getSecondLastName()); // Asegúrate de que este método existe
+                    } catch (IOException | InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
         tf_dni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_dniActionPerformed(evt);
             }
         });
-        jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 160, -1));
-        jPanel1.add(tf_secondName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 160, -1));
-        jPanel1.add(tf_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 160, -1));
+        jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 160, -1));
+        jPanel1.add(tf_secondName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 160, -1));
+        jPanel1.add(tf_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 160, -1));
 
         jButton1.setText("Guardar Usuario");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel9.setText("DNI");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 690, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 80));
+
+        jButton2.setText("Limpiar campos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,6 +170,10 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private void tf_dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_dniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_dniActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,13 +213,16 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField tf_dni;
     private javax.swing.JTextField tf_firstLastName;
     private javax.swing.JTextField tf_firstName;
