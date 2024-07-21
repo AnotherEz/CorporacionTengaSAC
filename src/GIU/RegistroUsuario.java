@@ -27,6 +27,18 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        tf_secondLastName = new javax.swing.JTextField();
+        tf_firstLastName = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tf_dni = new javax.swing.JTextField();
+        tf_secondName = new javax.swing.JTextField();
+        tf_firstName = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -34,6 +46,43 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(690, 440));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel4.setText("SEGUNDO NOMBRE");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 100, 20));
+
+        jLabel5.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel5.setText("DNI");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel6.setText("Apellido Materno");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, -1, -1));
+        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 160, -1));
+        jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 160, -1));
+
+        jLabel7.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel7.setText("PRIMER NOMBRE");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel8.setText("Apellido Paterno");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
+
+        tf_dni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_dniActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 160, -1));
+        jPanel1.add(tf_secondName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 160, -1));
+        jPanel1.add(tf_firstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 160, -1));
+
+        jButton1.setText("Guardar Usuario");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,6 +99,10 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tf_dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_dniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_dniActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +141,18 @@ public class RegistroUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField tf_dni;
+    private javax.swing.JTextField tf_firstLastName;
+    private javax.swing.JTextField tf_firstName;
+    private javax.swing.JTextField tf_secondLastName;
+    private javax.swing.JTextField tf_secondName;
     // End of variables declaration//GEN-END:variables
 }
