@@ -77,10 +77,10 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_secondLastName">
+        <Component class="javax.swing.JTextField" name="tf_sueldoBasico">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="150" width="160" height="-1"/>
+              <AbsoluteConstraints x="400" y="200" width="160" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -123,7 +123,7 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_dniKeyTyped"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value=" tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;            @Override&#xd;&#xa;            public void insertUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void removeUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void changedUpdate(DocumentEvent e) {&#xd;&#xa;                // Not needed for plain text components&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            private void handleTextChange() {&#xd;&#xa;                if (tf_dni.getText().length() == 8) {&#xd;&#xa;                    // Realiza la acci&#xf3;n deseada&#xd;&#xa;                    String DNI = tf_dni.getText();&#xd;&#xa;                    Trabajador usuariocondatosreniec = new Trabajador();&#xd;&#xa;                    new ConsultarDniWorker(DNI, usuariocondatosreniec).execute();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        });"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value=" tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;            @Override&#xd;&#xa;            public void insertUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void removeUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void changedUpdate(DocumentEvent e) {&#xd;&#xa;                // Not needed for plain text components&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            private void handleTextChange() {&#xd;&#xa;                if (tf_dni.getText().length() == 8) {&#xd;&#xa;                    // Realiza la acci&#xf3;n deseada&#xd;&#xa;                    String DNI = tf_dni.getText();&#xd;&#xa;                    Trabajador usuariocondatosreniec = new Trabajador(Float.parseFloat(tf_sueldoBasico.getText()));&#xd;&#xa;                    new ConsultarDniWorker(DNI, usuariocondatosreniec).execute();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        });"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -249,6 +249,13 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="270" y="150" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_secondLastName">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="400" y="150" width="160" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

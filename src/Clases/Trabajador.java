@@ -9,9 +9,7 @@ public class Trabajador extends Usuario {
     private float seguroSalud; // Seguro de salud
 
     // Constructor
-    public Trabajador(String nombress, String dni, float sueldoBasico) {
-        dni=super.DNI;
-        nombress=super.nombres;
+    public Trabajador( float sueldoBasico) {
         this.sueldoBasico = sueldoBasico;
         this.asignacionFamiliar = calcularAsignacionFamiliar();
         this.cts = calcularCTS();
