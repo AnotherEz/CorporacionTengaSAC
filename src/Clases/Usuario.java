@@ -4,6 +4,7 @@ public class Usuario {
     int codigoVerificacion;
     String firstName;
     String secondName;
+    String nombres;
     String firstLastName;
     String secondLastName;
     String RazonSocial;
@@ -37,6 +38,14 @@ public class Usuario {
         this.secondName = secondName;
     }
 
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String secondName) {
+        this.nombres = secondName;
+    }
+    
     public String getFirstLastName() {
         return firstLastName;
     }

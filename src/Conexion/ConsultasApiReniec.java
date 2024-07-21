@@ -96,8 +96,8 @@ public class ConsultasApiReniec {
 
     if (responseBody.get("success").asBoolean()) {
         JsonNode data = responseBody.get("data");
-        
         VarTemp=data.get("nombres").asText();
+        cliente.setNombres(VarTemp);
         Nombre=NombresSeparados(VarTemp);
         cliente.setFirstName(Nombre[0]);
         cliente.setSecondName(Nombre[1]);

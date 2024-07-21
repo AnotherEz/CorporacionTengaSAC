@@ -51,19 +51,6 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Source Code Pro" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="SEGUNDO NOMBRE"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="40" y="210" width="100" height="20"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -109,11 +96,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Source Code Pro" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="PRIMER NOMBRE"/>
+            <Property name="text" type="java.lang.String" value="NOMBRES"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="160" width="-1" height="-1"/>
+              <AbsoluteConstraints x="110" y="210" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -135,25 +122,18 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_dniActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;    @Override&#xd;&#xa;    public void insertUpdate(DocumentEvent e) {&#xd;&#xa;        handleTextChange();&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void removeUpdate(DocumentEvent e) {&#xd;&#xa;        handleTextChange();&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void changedUpdate(DocumentEvent e) {&#xd;&#xa;        // Not needed for plain text components&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    private void handleTextChange() {&#xd;&#xa;        if (tf_dni.getText().length() == 8) {&#xd;&#xa;            // Realiza la acci&#xf3;n deseada&#xd;&#xa;            System.out.println(&quot;El campo de texto tf_dni tiene 8 caracteres.&quot;);&#xd;&#xa;            // Puedes agregar aqu&#xed; cualquier acci&#xf3;n que desees realizar&#xd;&#xa;            String DNI = tf_dni.getText();&#xd;&#xa;            Cliente clientecreadoconeldni = new Cliente();&#xd;&#xa;&#xd;&#xa;            try {&#xd;&#xa;                consultarDni(DNI, clientecreadoconeldni);&#xd;&#xa;                ImprimirDatosC(clientecreadoconeldni);&#xd;&#xa;                tf_firstName.setText(clientecreadoconeldni.getFirstName());&#xd;&#xa;                tf_secondName.setText(clientecreadoconeldni.getSecondName());&#xd;&#xa;                tf_firstLastName.setText(clientecreadoconeldni.getFirstLastName()); // Aseg&#xfa;rate de que este m&#xe9;todo existe&#xd;&#xa;                tf_secondLastName.setText(clientecreadoconeldni.getSecondLastName()); // Aseg&#xfa;rate de que este m&#xe9;todo existe&#xd;&#xa;            } catch (IOException | InterruptedException e) {&#xd;&#xa;                e.printStackTrace();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;    @Override&#xd;&#xa;    public void insertUpdate(DocumentEvent e) {&#xd;&#xa;        handleTextChange();&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void removeUpdate(DocumentEvent e) {&#xd;&#xa;        handleTextChange();&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    @Override&#xd;&#xa;    public void changedUpdate(DocumentEvent e) {&#xd;&#xa;        // Not needed for plain text components&#xd;&#xa;    }&#xd;&#xa;&#xd;&#xa;    private void handleTextChange() {&#xd;&#xa;        if (tf_dni.getText().length() == 8) {&#xd;&#xa;            // Realiza la acci&#xf3;n deseada&#xd;&#xa;            System.out.println(&quot;El campo de texto tf_dni tiene 8 caracteres.&quot;);&#xd;&#xa;            // Puedes agregar aqu&#xed; cualquier acci&#xf3;n que desees realizar&#xd;&#xa;            String DNI = tf_dni.getText();&#xd;&#xa;            Cliente clientecreadoconeldni = new Cliente();&#xd;&#xa;&#xd;&#xa;            try {&#xd;&#xa;                consultarDni(DNI, clientecreadoconeldni);&#xd;&#xa;                ImprimirDatosC(clientecreadoconeldni);&#xd;&#xa;                tf_nombres.setText(clientecreadoconeldni.getNombres());&#xd;&#xa;                tf_firstLastName.setText(clientecreadoconeldni.getFirstLastName()); // Aseg&#xfa;rate de que este m&#xe9;todo existe&#xd;&#xa;                tf_secondLastName.setText(clientecreadoconeldni.getSecondLastName()); // Aseg&#xfa;rate de que este m&#xe9;todo existe&#xd;&#xa;            } catch (IOException | InterruptedException e) {&#xd;&#xa;                e.printStackTrace();&#xd;&#xa;            }&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;});"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="270" y="110" width="160" height="-1"/>
+              <AbsoluteConstraints x="170" y="160" width="160" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_secondName">
+        <Component class="javax.swing.JTextField" name="tf_nombres">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="150" y="210" width="160" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tf_firstName">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="150" y="160" width="160" height="-1"/>
+              <AbsoluteConstraints x="170" y="210" width="160" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -197,7 +177,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="230" y="110" width="-1" height="-1"/>
+              <AbsoluteConstraints x="130" y="160" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -235,7 +215,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="110" width="-1" height="-1"/>
+              <AbsoluteConstraints x="140" y="280" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
