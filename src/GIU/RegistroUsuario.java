@@ -28,11 +28,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         }
 
         protected Void doInBackground() throws Exception {
-            try {
-                ConsultasApiReniec.consultarDni(dni, clientecreadoconeldni);
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-            }
+            ConsultasApiReniec.consultarDni(dni, clientecreadoconeldni);
             return null;
         }
 
