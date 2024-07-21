@@ -7,7 +7,6 @@ public class Usuario {
     String nombres;
     String firstLastName;
     String secondLastName;
-    String RazonSocial;
     
     public static String GetNombreCompleto(Usuario usuario){
         String NombreCompleto=usuario.firstName+" "+ usuario.secondName+" "+usuario.firstLastName+" "+usuario.secondLastName;

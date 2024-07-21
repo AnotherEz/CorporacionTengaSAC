@@ -123,7 +123,7 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_dniKeyTyped"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value=" tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;            @Override&#xd;&#xa;            public void insertUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void removeUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void changedUpdate(DocumentEvent e) {&#xd;&#xa;                // Not needed for plain text components&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            private void handleTextChange() {&#xd;&#xa;                if (tf_dni.getText().length() == 8) {&#xd;&#xa;                    // Realiza la acci&#xf3;n deseada&#xd;&#xa;                    String DNI = tf_dni.getText();&#xd;&#xa;                    Trabajador usuariocondatosreniec = new Trabajador();&#xd;&#xa;                    new ConsultarDniWorker(DNI, usuariocondatosreniec).execute();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        });"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value=" tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;            @Override&#xd;&#xa;            public void insertUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void removeUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void changedUpdate(DocumentEvent e) {&#xd;&#xa;                // Not needed for plain text components&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            private void handleTextChange() {&#xd;&#xa;                if (tf_dni.getText().length() == 8) {&#xd;&#xa;                    // Realiza la acci&#xf3;n deseada&#xd;&#xa;                    String DNI = tf_dni.getText();&#xd;&#xa;                    Cliente clientecreadoconeldni = new Cliente();&#xd;&#xa;                    new ConsultarDniWorker(DNI, clientecreadoconeldni).execute();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        });"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -135,43 +135,6 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="170" y="210" width="160" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_guardarUsuario">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Guardar Usuario"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_guardarUsuarioActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="280" y="310" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Tipo Usuario"/>
-                <StringItem index="1" value="Administrador"/>
-                <StringItem index="2" value="Cajero"/>
-                <StringItem index="3" value="Vendedor"/>
-                <StringItem index="4" value="Almacenero"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="280" y="260" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -191,12 +154,12 @@
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="33" red="33" type="rgb"/>
+              <Color blue="ff" green="ff" red="33" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="690" height="80"/>
+              <AbsoluteConstraints x="0" y="0" width="690" height="70"/>
             </Constraint>
           </Constraints>
 
@@ -208,24 +171,11 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Limpiar campos"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="140" y="280" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

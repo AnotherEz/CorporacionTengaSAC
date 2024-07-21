@@ -1,5 +1,5 @@
 package Clases;
-public class Trabajador {
+public class Trabajador extends Usuario{
     
     
 }

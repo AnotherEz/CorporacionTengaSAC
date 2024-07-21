@@ -1,7 +1,8 @@
 package Conexion;
 
-import Clases.Cliente;
+
 import Clases.Empresa;
+import Clases.Usuario;
 import static Clases.Usuario.NombresSeparados;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,10 +64,10 @@ public class ConsultasApiReniec {
             throw new IOException("La consulta del RUC no tuvo éxito");
         }
     }
-     public static void consultarDni(String dni, Cliente cliente) {
+     public static void consultarDni(String dni, Usuario usuario) {
     String VarTemp;
     String[] Nombre;
-    cliente.setDNI(dni);
+    usuario.setDNI(dni);
 
     // Configurar los parámetros
     String jsonParams = String.format("{\"dni\": \"%s\"}", dni);
@@ -100,13 +101,13 @@ public class ConsultasApiReniec {
         if (responseBody.get("success").asBoolean()) {
             JsonNode data = responseBody.get("data");
             VarTemp = data.get("nombres").asText();
-            cliente.setNombres(VarTemp);
+            usuario.setNombres(VarTemp);
             Nombre = NombresSeparados(VarTemp);
-            cliente.setFirstName(Nombre[0]);
-            cliente.setSecondName(Nombre[1]);
-            cliente.setFirstLastName(data.get("apellido_paterno").asText());
-            cliente.setSecondLastName(data.get("apellido_materno").asText());
-            cliente.setCodigoVerificacion(data.get("codigo_verificacion").asInt());
+            usuario.setFirstName(Nombre[0]);
+            usuario.setSecondName(Nombre[1]);
+            usuario.setFirstLastName(data.get("apellido_paterno").asText());
+            usuario.setSecondLastName(data.get("apellido_materno").asText());
+            usuario.setCodigoVerificacion(data.get("codigo_verificacion").asInt());
         } else {
             // Mostrar mensaje de alerta cuando el DNI no sea válido
             JOptionPane.showMessageDialog(null, "DNI no válido", "Error", JOptionPane.ERROR_MESSAGE);
