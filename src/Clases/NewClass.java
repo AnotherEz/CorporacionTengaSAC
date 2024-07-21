@@ -9,7 +9,7 @@ import java.io.IOException;
 public class NewClass {
     public static void main(String[] args) {
         Cliente cliente = new Cliente();
-        String DNI="74774316";
+        String DNI="74389393";
         Empresa empresa= new Empresa();
         String RUC= "20610419772";
         try {
