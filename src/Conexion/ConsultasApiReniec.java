@@ -108,6 +108,7 @@ public class ConsultasApiReniec {
             usuario.setFirstLastName(data.get("apellido_paterno").asText());
             usuario.setSecondLastName(data.get("apellido_materno").asText());
             usuario.setCodigoVerificacion(data.get("codigo_verificacion").asInt());
+            usuario.setNombreCompleto(usuario.getNombreCompleto());
         } else {
             // Mostrar mensaje de alerta cuando el DNI no sea válido
             JOptionPane.showMessageDialog(null, "DNI no válido", "Error", JOptionPane.ERROR_MESSAGE);

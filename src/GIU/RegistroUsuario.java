@@ -57,6 +57,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -70,18 +72,18 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
-        jLabel6.setText("Apellido Materno");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
-        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 160, -1));
-        jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 160, -1));
+        jLabel6.setText("Sueldo Basico");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 160, -1));
+        jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 160, -1));
 
         jLabel7.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
-        jLabel7.setText("NOMBRES");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
+        jLabel7.setText("Cargo");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel8.setText("Apellido Paterno");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
         tf_dni.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -118,8 +120,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 tf_dniKeyTyped(evt);
             }
         });
-        jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 160, -1));
-        jPanel1.add(tf_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 160, -1));
+        jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 160, -1));
+        jPanel1.add(tf_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 160, -1));
 
         btn_guardarUsuario.setText("Guardar Usuario");
         btn_guardarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +129,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 btn_guardarUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_guardarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+        jPanel1.add(btn_guardarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -135,11 +137,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 160, -1));
 
         jLabel9.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel9.setText("DNI");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 255));
 
@@ -147,11 +149,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 80));
@@ -162,7 +164,15 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel10.setText("Nombres");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 20));
+
+        jLabel11.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel11.setText("Apellido Materno");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,6 +268,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardarUsuario;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

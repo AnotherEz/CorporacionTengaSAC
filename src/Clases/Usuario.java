@@ -7,10 +7,14 @@ public class Usuario {
     String nombres;
     String firstLastName;
     String secondLastName;
+    String nombreCompleto;
     
-    public static String GetNombreCompleto(Usuario usuario){
-        String NombreCompleto=usuario.firstName+" "+ usuario.secondName+" "+usuario.firstLastName+" "+usuario.secondLastName;
-        return NombreCompleto;
+    public String getNombreCompleto(){
+        return nombres+" "+firstLastName+" "+secondLastName;
+    }
+    
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
     
      public String getDNI() {
