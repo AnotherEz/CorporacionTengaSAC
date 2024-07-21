@@ -12,15 +12,12 @@ import javax.swing.SwingWorker;
 
 public class RegistroUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
     
     public RegistroUsuario() {
         initComponents();
          
     }
-
+//Esta clase es para que la consulta se haga en un hilo diferente y se actualicen los textFields sin retraso en la interface de usuario
    private class ConsultarDniWorker extends SwingWorker<Void, Void> {
         private final String dni;
         private final Cliente clientecreadoconeldni;
@@ -59,7 +56,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tf_dni = new javax.swing.JTextField();
         tf_nombres = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_guardarUsuario = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -120,13 +117,28 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 tf_dniActionPerformed(evt);
             }
         });
+        tf_dni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tf_dniKeyTyped(evt);
+            }
+        });
         jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 160, -1));
         jPanel1.add(tf_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 160, -1));
 
-        jButton1.setText("Guardar Usuario");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+        btn_guardarUsuario.setText("Guardar Usuario");
+        btn_guardarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_guardarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
@@ -180,6 +192,36 @@ public class RegistroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btn_guardarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarUsuarioActionPerformed
+    tf_dni.setText("");
+    tf_nombres.setText("");
+    tf_firstLastName.setText("");
+    tf_secondLastName.setText("");
+    tf_dni.requestFocus();
+    System.out.print("Usuario guardado");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_guardarUsuarioActionPerformed
+
+    private void tf_dniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_dniKeyTyped
+
+        // TODO add your handling code here:
+    char c = evt.getKeyChar();
+    
+    // Verificar si el carácter es un dígito
+    if (!Character.isDigit(c)) {
+        evt.consume();  // Ignorar la entrada no numérica
+    }
+    
+    // Verificar la longitud del texto actual
+    if (tf_dni.getText().length() >= 8) {
+        evt.consume();  // Ignorar si ya hay 8 caracteres
+    }
+    }//GEN-LAST:event_tf_dniKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -217,7 +259,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_guardarUsuario;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel5;

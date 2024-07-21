@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import javax.swing.JOptionPane;
 
 public class ConsultasApiReniec {
     private static String TokenApi="c7a9d544149df08bbb59706f2057dd3b5efac6ffa7f58c6401e8e9a08b004b77";
@@ -62,51 +63,56 @@ public class ConsultasApiReniec {
             throw new IOException("La consulta del RUC no tuvo éxito");
         }
     }
-     public static void consultarDni(String dni, Cliente cliente) throws IOException, InterruptedException {
-         String VarTemp;
-         String[] Nombre;
-         cliente.setDNI(dni);
-      
+     public static void consultarDni(String dni, Cliente cliente) {
+    String VarTemp;
+    String[] Nombre;
+    cliente.setDNI(dni);
+
     // Configurar los parámetros
     String jsonParams = String.format("{\"dni\": \"%s\"}", dni);
 
-    // Crear el cliente HttpClient
-    HttpClient client = HttpClient.newHttpClient();
+    try {
+        // Crear el cliente HttpClient
+        HttpClient client = HttpClient.newHttpClient();
 
-    // Crear la solicitud HttpRequest
-    HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("https://apiperu.dev/api/dni"))
-            .header("Accept", "application/json")
-            .header("Content-Type", "application/json")
-            .header("Authorization", "Bearer " + TokenApi)
-            .POST(HttpRequest.BodyPublishers.ofString(jsonParams))
-            .build();
+        // Crear la solicitud HttpRequest
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://apiperu.dev/api/dni"))
+                .header("Accept", "application/json")
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + TokenApi)
+                .POST(HttpRequest.BodyPublishers.ofString(jsonParams))
+                .build();
 
-    // Enviar la solicitud y manejar la respuesta
-    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        // Enviar la solicitud y manejar la respuesta
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-    // Verificar el estado de la respuesta
-    if (response.statusCode() != 200) {
-        throw new IOException("Error en la solicitud: " + response.statusCode());
+        // Verificar el estado de la respuesta
+        if (response.statusCode() != 200) {
+            JOptionPane.showMessageDialog(null, "Error en la solicitud: " + response.statusCode(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Parsear la respuesta JSON
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode responseBody = mapper.readTree(response.body());
+
+        if (responseBody.get("success").asBoolean()) {
+            JsonNode data = responseBody.get("data");
+            VarTemp = data.get("nombres").asText();
+            cliente.setNombres(VarTemp);
+            Nombre = NombresSeparados(VarTemp);
+            cliente.setFirstName(Nombre[0]);
+            cliente.setSecondName(Nombre[1]);
+            cliente.setFirstLastName(data.get("apellido_paterno").asText());
+            cliente.setSecondLastName(data.get("apellido_materno").asText());
+            cliente.setCodigoVerificacion(data.get("codigo_verificacion").asInt());
+        } else {
+            // Mostrar mensaje de alerta cuando el DNI no sea válido
+            JOptionPane.showMessageDialog(null, "DNI no válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (IOException | InterruptedException e) {
+        JOptionPane.showMessageDialog(null, "Error en la comunicación con el servidor", "Error", JOptionPane.ERROR_MESSAGE);
     }
-
-    // Parsear la respuesta JSON
-    ObjectMapper mapper = new ObjectMapper();
-    JsonNode responseBody = mapper.readTree(response.body());
-
-    if (responseBody.get("success").asBoolean()) {
-        JsonNode data = responseBody.get("data");
-        VarTemp=data.get("nombres").asText();
-        cliente.setNombres(VarTemp);
-        Nombre=NombresSeparados(VarTemp);
-        cliente.setFirstName(Nombre[0]);
-        cliente.setSecondName(Nombre[1]);
-        cliente.setFirstLastName(data.get("apellido_paterno").asText());
-        cliente.setSecondLastName(data.get("apellido_materno").asText());
-        cliente.setCodigoVerificacion(data.get("codigo_verificacion").asInt());  
-    } else {
-        throw new IOException("La consulta del DNI no tuvo éxito");
-    }
-     }
-    
+}
 }

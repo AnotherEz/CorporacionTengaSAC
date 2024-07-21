@@ -120,6 +120,7 @@
         <Component class="javax.swing.JTextField" name="tf_dni">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_dniActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tf_dniKeyTyped"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value=" tf_dni.getDocument().addDocumentListener(new DocumentListener() {&#xd;&#xa;            @Override&#xd;&#xa;            public void insertUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void removeUpdate(DocumentEvent e) {&#xd;&#xa;                handleTextChange();&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            @Override&#xd;&#xa;            public void changedUpdate(DocumentEvent e) {&#xd;&#xa;                // Not needed for plain text components&#xd;&#xa;            }&#xd;&#xa;&#xd;&#xa;            private void handleTextChange() {&#xd;&#xa;                if (tf_dni.getText().length() == 8) {&#xd;&#xa;                    // Realiza la acci&#xf3;n deseada&#xd;&#xa;                    String DNI = tf_dni.getText();&#xd;&#xa;                    Cliente clientecreadoconeldni = new Cliente();&#xd;&#xa;                    new ConsultarDniWorker(DNI, clientecreadoconeldni).execute();&#xd;&#xa;                }&#xd;&#xa;            }&#xd;&#xa;        });"/>
@@ -137,10 +138,13 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btn_guardarUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar Usuario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_guardarUsuarioActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="280" y="310" width="-1" height="-1"/>
@@ -159,6 +163,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
