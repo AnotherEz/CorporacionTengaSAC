@@ -1,20 +1,28 @@
 package Conexion;
 
-
 import Clases.Empresa;
 import Clases.Usuario;
 import static Clases.Usuario.NombresSeparados;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import javax.swing.JOptionPane;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConsultasApiReniec {
-    private static String TokenApi="c7a9d544149df08bbb59706f2057dd3b5efac6ffa7f58c6401e8e9a08b004b77";
+    private static TokenManager tokenManager = new TokenManager(100); // Cambiar token cada 100 consultas
+
+    static {
+        // Agregar los tokens disponibles
+        tokenManager.agregarToken("d63cfbea68e9dfce6f21641fcd94c65a671692b3288c9997edbb513109ca5e4c");
+        tokenManager.agregarToken("token2");
+        tokenManager.agregarToken("token3");
+        // Agregar más tokens si es necesario
+    }
+
     public static void consultarRUC(String ruc, Empresa empresa) throws IOException, InterruptedException {
         // Configurar los parámetros
         String jsonParams = String.format("{\"ruc\": \"%s\"}", ruc);
@@ -27,7 +35,7 @@ public class ConsultasApiReniec {
                 .uri(URI.create("https://apiperu.dev/api/ruc"))
                 .header("Accept", "application/json")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer " + TokenApi)
+                .header("Authorization", "Bearer " + tokenManager.getTokenActual())
                 .POST(HttpRequest.BodyPublishers.ofString(jsonParams))
                 .build();
 
@@ -36,6 +44,7 @@ public class ConsultasApiReniec {
 
         // Verificar el estado de la respuesta
         if (response.statusCode() != 200) {
+            tokenManager.incrementarContador(); // Incrementar el contador de consultas
             throw new IOException("Error en la solicitud: " + response.statusCode());
         }
 
@@ -61,60 +70,68 @@ public class ConsultasApiReniec {
             empresa.setEsAgenteDeRetencion(data.has("es_agente_de_retencion") ? data.get("es_agente_de_retencion").asBoolean() : null);
             empresa.setEsBuenContribuyente(data.has("es_buen_contribuyente") ? data.get("es_buen_contribuyente").asBoolean() : null);
         } else {
+            tokenManager.incrementarContador(); // Incrementar el contador de consultas
             throw new IOException("La consulta del RUC no tuvo éxito");
         }
+
+        tokenManager.incrementarContador(); // Incrementar el contador de consultas
     }
-     public static void consultarDni(String dni, Usuario usuario) {
-    String VarTemp;
-    String[] Nombre;
-    usuario.setDNI(dni);
 
-    // Configurar los parámetros
-    String jsonParams = String.format("{\"dni\": \"%s\"}", dni);
+    public static void consultarDni(String dni, Usuario usuario) {
+        String VarTemp;
+        String[] Nombre;
+        usuario.setDNI(dni);
 
-    try {
-        // Crear el cliente HttpClient
-        HttpClient client = HttpClient.newHttpClient();
+        // Configurar los parámetros
+        String jsonParams = String.format("{\"dni\": \"%s\"}", dni);
 
-        // Crear la solicitud HttpRequest
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://apiperu.dev/api/dni"))
-                .header("Accept", "application/json")
-                .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer " + TokenApi)
-                .POST(HttpRequest.BodyPublishers.ofString(jsonParams))
-                .build();
+        try {
+            // Crear el cliente HttpClient
+            HttpClient client = HttpClient.newHttpClient();
 
-        // Enviar la solicitud y manejar la respuesta
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            // Crear la solicitud HttpRequest
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://apiperu.dev/api/dni"))
+                    .header("Accept", "application/json")
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", "Bearer " + tokenManager.getTokenActual())
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonParams))
+                    .build();
 
-        // Verificar el estado de la respuesta
-        if (response.statusCode() != 200) {
-            JOptionPane.showMessageDialog(null, "Error en la solicitud: " + response.statusCode(), "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+            // Enviar la solicitud y manejar la respuesta
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            // Verificar el estado de la respuesta
+            if (response.statusCode() != 200) {
+                tokenManager.incrementarContador(); // Incrementar el contador de consultas
+                JOptionPane.showMessageDialog(null, "Error en la solicitud: " + response.statusCode(), "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Parsear la respuesta JSON
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode responseBody = mapper.readTree(response.body());
+
+            if (responseBody.get("success").asBoolean()) {
+                JsonNode data = responseBody.get("data");
+                VarTemp = data.get("nombres").asText();
+                usuario.setNombres(VarTemp);
+                Nombre = NombresSeparados(VarTemp);
+                usuario.setFirstName(Nombre[0]);
+                usuario.setSecondName(Nombre[1]);
+                usuario.setFirstLastName(data.get("apellido_paterno").asText());
+                usuario.setSecondLastName(data.get("apellido_materno").asText());
+                usuario.setCodigoVerificacion(data.get("codigo_verificacion").asInt());
+                usuario.setNombreCompleto(usuario.getNombreCompleto());
+            } else {
+                tokenManager.incrementarContador(); // Incrementar el contador de consultas
+                // Mostrar mensaje de alerta cuando el DNI no sea válido
+                JOptionPane.showMessageDialog(null, "DNI no válido", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            tokenManager.incrementarContador(); // Incrementar el contador de consultas
+        } catch (IOException | InterruptedException e) {
+            JOptionPane.showMessageDialog(null, "Error en la comunicación con el servidor", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        // Parsear la respuesta JSON
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode responseBody = mapper.readTree(response.body());
-
-        if (responseBody.get("success").asBoolean()) {
-            JsonNode data = responseBody.get("data");
-            VarTemp = data.get("nombres").asText();
-            usuario.setNombres(VarTemp);
-            Nombre = NombresSeparados(VarTemp);
-            usuario.setFirstName(Nombre[0]);
-            usuario.setSecondName(Nombre[1]);
-            usuario.setFirstLastName(data.get("apellido_paterno").asText());
-            usuario.setSecondLastName(data.get("apellido_materno").asText());
-            usuario.setCodigoVerificacion(data.get("codigo_verificacion").asInt());
-            usuario.setNombreCompleto(usuario.getNombreCompleto());
-        } else {
-            // Mostrar mensaje de alerta cuando el DNI no sea válido
-            JOptionPane.showMessageDialog(null, "DNI no válido", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    } catch (IOException | InterruptedException e) {
-        JOptionPane.showMessageDialog(null, "Error en la comunicación con el servidor", "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
 }

@@ -1,15 +1,17 @@
 
 package Clases;
  public class Empresa {
-     private String ruc;
+    //atributos importantes
+    private String ruc;
     private String nombre;
-    private String estado;
-    private String condicion;
     private String direccion;
-    private String direccionCompleta;
-    private String departamento;
+     private String departamento;
     private String provincia;
     private String distrito;
+    private String direccionCompleta;
+    //otros atributos no importantes
+    private String estado;
+    private String condicion;
     private String ubigeoSunat;
     private String[] ubigeo;
     private Boolean esAgenteDeRetencion;

@@ -19,15 +19,14 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelBase = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        PanelLateral = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tf_user = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tf_pass = new javax.swing.JTextField();
         btn_login = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -36,55 +35,42 @@ public class Login extends javax.swing.JFrame {
         PanelBase.setPreferredSize(new java.awt.Dimension(690, 440));
         PanelBase.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Source Code Pro Black", 0, 20)); // NOI18N
-        jLabel1.setText("Y servicios Tenga S.A.C");
-        PanelBase.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
-
-        PanelLateral.setBackground(new java.awt.Color(0, 51, 255));
-
-        javax.swing.GroupLayout PanelLateralLayout = new javax.swing.GroupLayout(PanelLateral);
-        PanelLateral.setLayout(PanelLateralLayout);
-        PanelLateralLayout.setHorizontalGroup(
-            PanelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-        PanelLateralLayout.setVerticalGroup(
-            PanelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
-        );
-
-        PanelBase.add(PanelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Source Code Pro Black", 0, 20)); // NOI18N
-        jLabel2.setText("Corporacion de ingenieria");
-        PanelBase.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel3.setText("Password");
         PanelBase.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
         PanelBase.add(tf_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 170, -1));
 
-        jLabel4.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel4.setText("Usuario");
         PanelBase.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
         PanelBase.add(tf_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 170, -1));
 
+        btn_login.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         btn_login.setText("Entrar");
         PanelBase.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jLabel5.setText("¿Olvidaste tu contraseña?");
         PanelBase.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC_.png"))); // NOI18N
+        PanelBase.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/panel_camera_.jpg"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(275, 440));
+        jLabel2.setMinimumSize(new java.awt.Dimension(275, 440));
+        jLabel2.setPreferredSize(new java.awt.Dimension(316, 440));
+        PanelBase.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 270, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelBase, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(PanelBase, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(PanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -127,13 +113,12 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelBase;
-    private javax.swing.JPanel PanelLateral;
     private javax.swing.JButton btn_login;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField tf_pass;
     private javax.swing.JTextField tf_user;
     // End of variables declaration//GEN-END:variables

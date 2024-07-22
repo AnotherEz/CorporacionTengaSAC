@@ -1,5 +1,6 @@
 package Clases;
 public class Trabajador extends Usuario {
+    String FechaIngreso;
     float sueldoBasico;
     float asignacionFamiliar;
     float cts; // Compensación por Tiempo de Servicios

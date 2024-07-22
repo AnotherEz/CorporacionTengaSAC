@@ -46,7 +46,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         tf_secondLastName = new javax.swing.JTextField();
         tf_firstLastName = new javax.swing.JTextField();
@@ -69,10 +68,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(690, 440));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Source Code Pro", 0, 20)); // NOI18N
-        jLabel5.setText("TENGA S.A.C");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         jLabel6.setText("Sueldo Basico");
@@ -287,7 +282,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
