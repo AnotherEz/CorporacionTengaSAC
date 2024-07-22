@@ -56,33 +56,49 @@ public class RegistroUsuario extends javax.swing.JFrame {
         btn_guardarUsuario = new javax.swing.JButton();
         cb_cargo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         tf_sueldoBasico = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(690, 440));
+        jPanel1.setPreferredSize(new java.awt.Dimension(760, 520));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel6.setText("Sueldo Basico");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
-        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 160, -1));
-        jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 160, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        tf_secondLastName.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tf_secondLastName.setBorder(null);
+        jPanel1.add(tf_secondLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 160, -1));
+
+        tf_firstLastName.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tf_firstLastName.setBorder(null);
+        jPanel1.add(tf_firstLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 160, -1));
+
+        jLabel7.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel7.setText("Cargo");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel8.setText("Apellido Paterno");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
 
+        tf_dni.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tf_dni.setBorder(null);
         tf_dni.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -129,8 +145,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 tf_dniKeyTyped(evt);
             }
         });
-        jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 160, -1));
-        jPanel1.add(tf_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 160, -1));
+        jPanel1.add(tf_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 160, -1));
+
+        tf_nombres.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tf_nombres.setBorder(null);
+        jPanel1.add(tf_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 160, -1));
 
         btn_guardarUsuario.setText("Guardar Usuario");
         btn_guardarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -138,34 +157,20 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 btn_guardarUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_guardarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, -1, -1));
+        jPanel1.add(btn_guardarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, -1, -1));
 
+        cb_cargo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
         cb_cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_cargoActionPerformed(evt);
             }
         });
-        jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 160, -1));
+        jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 160, -1));
 
-        jLabel9.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel9.setText("DNI");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(17, 142, 191));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 80));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
         jButton2.setText("Limpiar campos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -173,16 +178,72 @@ public class RegistroUsuario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel10.setText("Nombres");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 20));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, 20));
 
-        jLabel11.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel11.setText("Apellido Materno");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
-        jPanel1.add(tf_sueldoBasico, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 160, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
+
+        tf_sueldoBasico.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tf_sueldoBasico.setBorder(null);
+        jPanel1.add(tf_sueldoBasico, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 160, -1));
+
+        jPanel2.setBackground(new java.awt.Color(25, 53, 89));
+
+        jLabel13.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Registro de Usuario - Sistema de Gestión de Seguridad Electrónica");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel13)
+                .addContainerGap(315, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 90));
+
+        jLabel12.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel12.setText("Todos los campos son obligatorios.");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel14.setText("Por favor, complete los siguientes campos para registrar un nuevo usuario en el sistema.");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jLabel4.setText("_______________________________________________________");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jLabel5.setText("_______________________________________________________");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jLabel15.setText("_______________________________________________________");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jLabel16.setText("_______________________________________________________");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jLabel17.setText("_______________________________________________________");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -192,9 +253,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -282,6 +341,14 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
