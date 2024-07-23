@@ -19,17 +19,17 @@ public class Login extends javax.swing.JFrame {
 
         PanelBase = new javax.swing.JPanel();
         tf_user = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jl_bienvenida_text3 = new javax.swing.JLabel();
         btn_login = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        Icon_Logo_head = new javax.swing.JLabel();
+        jl_fondo_panel = new javax.swing.JLabel();
+        jl_olvidasteContaseña = new javax.swing.JLabel();
+        jl_password = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jl_bienvenida_text1 = new javax.swing.JLabel();
+        jl_bienvenida_text2 = new javax.swing.JLabel();
+        subrayadoTextFields1 = new javax.swing.JLabel();
+        subrayadoTextFields2 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,50 +50,49 @@ public class Login extends javax.swing.JFrame {
         });
         PanelBase.add(tf_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 190, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel4.setText("Su seguridad es nuestra prioridad.");
-        PanelBase.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        jl_bienvenida_text3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jl_bienvenida_text3.setText("Su seguridad es nuestra prioridad.");
+        PanelBase.add(jl_bienvenida_text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         btn_login.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         btn_login.setText("Entrar");
         PanelBase.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC.png"))); // NOI18N
-        PanelBase.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        Icon_Logo_head.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC-326X130px.png"))); // NOI18N
+        PanelBase.add(Icon_Logo_head, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/panel_camera_.jpg"))); // NOI18N
-        jLabel2.setMaximumSize(new java.awt.Dimension(275, 440));
-        jLabel2.setMinimumSize(new java.awt.Dimension(275, 440));
-        jLabel2.setPreferredSize(new java.awt.Dimension(326, 520));
-        PanelBase.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, -1));
+        jl_fondo_panel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/panel_camera_.jpg"))); // NOI18N
+        jl_fondo_panel.setMaximumSize(new java.awt.Dimension(275, 440));
+        jl_fondo_panel.setMinimumSize(new java.awt.Dimension(275, 440));
+        PanelBase.add(jl_fondo_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel7.setText("¿Olvidaste tu contraseña?");
-        PanelBase.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
+        jl_olvidasteContaseña.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jl_olvidasteContaseña.setText("¿Olvidaste tu contraseña?");
+        PanelBase.add(jl_olvidasteContaseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel8.setText("Password");
-        PanelBase.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
+        jl_password.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jl_password.setText("Password");
+        PanelBase.add(jl_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel9.setText("Usuario");
         PanelBase.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
-        jLabel10.setText("Bienvenido/a al Sistema de Gestión de  Seguridad Electrónica");
-        PanelBase.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jl_bienvenida_text1.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jl_bienvenida_text1.setText("Bienvenido/a al Sistema de Gestión de  Seguridad Electrónica");
+        PanelBase.add(jl_bienvenida_text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel11.setText("Por favor, ingrese sus credenciales para acceder a su cuenta. ");
-        PanelBase.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        jl_bienvenida_text2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jl_bienvenida_text2.setText("Por favor, ingrese sus credenciales para acceder a su cuenta. ");
+        PanelBase.add(jl_bienvenida_text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
-        jLabel1.setText("_________________________________________________________________");
-        PanelBase.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
+        subrayadoTextFields1.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        subrayadoTextFields1.setText("_________________________________________________________________");
+        PanelBase.add(subrayadoTextFields1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
-        jLabel3.setText("_________________________________________________________________");
-        PanelBase.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
+        subrayadoTextFields2.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        subrayadoTextFields2.setText("_________________________________________________________________");
+        PanelBase.add(subrayadoTextFields2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
 
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setBorder(null);
@@ -162,19 +161,19 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Icon_Logo_head;
     private javax.swing.JPanel PanelBase;
     private javax.swing.JButton btn_login;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel jl_bienvenida_text1;
+    private javax.swing.JLabel jl_bienvenida_text2;
+    private javax.swing.JLabel jl_bienvenida_text3;
+    private javax.swing.JLabel jl_fondo_panel;
+    private javax.swing.JLabel jl_olvidasteContaseña;
+    private javax.swing.JLabel jl_password;
+    private javax.swing.JLabel subrayadoTextFields1;
+    private javax.swing.JLabel subrayadoTextFields2;
     private javax.swing.JTextField tf_user;
     // End of variables declaration//GEN-END:variables
 }

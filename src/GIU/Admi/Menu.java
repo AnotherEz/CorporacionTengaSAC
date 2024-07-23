@@ -58,7 +58,7 @@ public class Menu extends javax.swing.JFrame {
         Contenedor.setBackground(new java.awt.Color(255, 255, 255));
         Contenedor.setRequestFocusEnabled(false);
 
-        logotipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC.png"))); // NOI18N
+        logotipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC-452X180px.png"))); // NOI18N
 
         icon_User.setFont(new java.awt.Font("Trebuchet MS", 2, 14)); // NOI18N
         icon_User.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -69,23 +69,23 @@ public class Menu extends javax.swing.JFrame {
         Contenedor.setLayout(ContenedorLayout);
         ContenedorLayout.setHorizontalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
-                .addContainerGap(611, Short.MAX_VALUE)
+            .addGroup(ContenedorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(icon_User)
                 .addGap(61, 61, 61))
             .addGroup(ContenedorLayout.createSequentialGroup()
-                .addGap(204, 204, 204)
+                .addGap(155, 155, 155)
                 .addComponent(logotipo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         ContenedorLayout.setVerticalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContenedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(icon_User, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(logotipo)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addComponent(logotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         getContentPane().add(Contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
