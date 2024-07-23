@@ -58,8 +58,8 @@ public class Login extends javax.swing.JFrame {
         btn_login.setText("Entrar");
         PanelBase.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC_.png"))); // NOI18N
-        PanelBase.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC.png"))); // NOI18N
+        PanelBase.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/panel_camera_.jpg"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(275, 440));
