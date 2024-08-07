@@ -23,7 +23,8 @@ public class ConsultasApiReniec {
         // Agregar más tokens si es necesario
     }
 
-    public static void consultarRUC(String ruc, Empresa empresa) throws IOException, InterruptedException {
+public static void consultarRUC(String ruc, Empresa empresa) {
+    try {
         // Configurar los parámetros
         String jsonParams = String.format("{\"ruc\": \"%s\"}", ruc);
 
@@ -42,9 +43,11 @@ public class ConsultasApiReniec {
         // Enviar la solicitud y manejar la respuesta
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
+        // Incrementar el contador de consultas
+        tokenManager.incrementarContador();
+
         // Verificar el estado de la respuesta
         if (response.statusCode() != 200) {
-            tokenManager.incrementarContador(); // Incrementar el contador de consultas
             throw new IOException("Error en la solicitud: " + response.statusCode());
         }
 
@@ -70,12 +73,14 @@ public class ConsultasApiReniec {
             empresa.setEsAgenteDeRetencion(data.has("es_agente_de_retencion") ? data.get("es_agente_de_retencion").asBoolean() : null);
             empresa.setEsBuenContribuyente(data.has("es_buen_contribuyente") ? data.get("es_buen_contribuyente").asBoolean() : null);
         } else {
-            tokenManager.incrementarContador(); // Incrementar el contador de consultas
             throw new IOException("La consulta del RUC no tuvo éxito");
         }
-
-        tokenManager.incrementarContador(); // Incrementar el contador de consultas
+    } catch (IOException | InterruptedException e) {
+        e.printStackTrace();
+        // Manejar la excepción según sea necesario
     }
+}
+
 
     public static void consultarDni(String dni, Usuario usuario) {
         String VarTemp;

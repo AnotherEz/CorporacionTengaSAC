@@ -160,7 +160,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jPanel1.add(btn_guardarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, -1, -1));
 
         cb_cargo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Cajero", "Vendedor", "Almacenero" }));
+        cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo Usuario", "Administrador", "Vendedor", "Almacenero" }));
         cb_cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_cargoActionPerformed(evt);

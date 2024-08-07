@@ -1,6 +1,7 @@
 package Clases;
 public class Trabajador extends Usuario {
-    String FechaIngreso;
+    String cargo;
+    String fechaIngreso;
     float sueldoBasico;
     float asignacionFamiliar;
     float cts; // Compensación por Tiempo de Servicios
@@ -18,7 +19,20 @@ public Trabajador(){
         // Ejemplo: 10% del sueldo básico
         return sueldoBasico * 0.10f;
     }
-
+     public String getCargo() {
+        return cargo;
+    }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+    
+     public String getFechaIngreso() {
+        return fechaIngreso;
+    }
+    public void setFechaIngreso(String cargo) {
+        this.fechaIngreso = cargo;
+    }
+    
     private float calcularCTS() {
         // Ejemplo: 8.33% del sueldo básico, acumulado semestralmente
         return sueldoBasico * 0.0833f;

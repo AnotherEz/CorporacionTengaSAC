@@ -1,6 +1,9 @@
 
 package Clases;
- public class Empresa {
+
+import Clases.Cliente;
+
+ public class Empresa extends Cliente{
     //atributos importantes
     private String ruc;
     private String nombre;
@@ -16,7 +19,8 @@ package Clases;
     private String[] ubigeo;
     private Boolean esAgenteDeRetencion;
     private Boolean esBuenContribuyente;
-
+    
+   
     // Getters y Setters
     public String getRuc() {
         return ruc;
@@ -121,7 +125,9 @@ package Clases;
     public void setEsBuenContribuyente(Boolean esBuenContribuyente) {
         this.esBuenContribuyente = esBuenContribuyente;
     }
-    
+     public void limpiarDatos(Empresa empresa) {
+        this.esBuenContribuyente = esBuenContribuyente;
+    }
     
     
      public static void ImprimirDatosE(Empresa empresa) {
