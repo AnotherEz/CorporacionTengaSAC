@@ -4,7 +4,8 @@ package GIU;
 import Conexion.ConsultasDatabase;
 import GIU.Admi.PanelAdministrador;
 import GIU.Almacenero.PanelAlmacenero;
-import GIU.VendedorCajero.PanelVendedor;
+import GIU.VendedorCajero.PanelVendedorPrincipal;
+import GIU.VendedorCajero.realizarventa;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ItemEvent;
@@ -410,7 +411,7 @@ public class Login extends javax.swing.JFrame {
                 break;
                  case "Vendedor":
                 // Acción para Vendedor
-                new PanelVendedor().setVisible(true);
+                new PanelVendedorPrincipal().setVisible(true);
                  break;
                  default:
                 

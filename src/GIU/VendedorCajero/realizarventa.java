@@ -19,16 +19,16 @@ import java.awt.Point;
 import javax.swing.SwingWorker;
 
 
-public class PanelVendedor extends javax.swing.JFrame {
+public class realizarventa extends javax.swing.JFrame {
     Trabajador usuariocondatosreniec = new Trabajador();
     GridBagConstraints gbc = new GridBagConstraints();
     Empresa empresa = new Empresa();
-    vendedor_menu_pop_1 pop_vendedor_menu=new vendedor_menu_pop_1();
-    vendedor_menu_pop_2 pop_2= new vendedor_menu_pop_2();
+   // vendedor_menu_pop_1 pop_vendedor_menu=new vendedor_menu_pop_1();
+   // vendedor_menu_pop_2 pop_2= new vendedor_menu_pop_2();
     private Point initialClick;
      Dimension expandedSize = new Dimension(262, 660);
      Dimension originalSize= new Dimension(45, 660);
-    public PanelVendedor() {
+    public realizarventa() {
         initComponents();
     }
     
@@ -591,7 +591,7 @@ public class PanelVendedor extends javax.swing.JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 0.5;
         gbc.weighty = 1.0;
-        contenedor_menupop.add(pop_2, gbc);
+//        contenedor_menupop.add(pop_2, gbc);
 
         // Establecer tamaño preferido del contenedor principal
         //Dimension originalSize = new Dimension(400, 200);
@@ -618,14 +618,30 @@ public class PanelVendedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(realizarventa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(realizarventa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(realizarventa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(realizarventa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -646,7 +662,7 @@ public class PanelVendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PanelVendedor().setVisible(true);
+                new realizarventa().setVisible(true);
             }
         });
     }
