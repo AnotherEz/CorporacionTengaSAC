@@ -8,12 +8,12 @@ package GIU.VendedorCajero;
  *
  * @author Eduardo Fernandez
  */
-public class opc_home extends javax.swing.JPanel {
+public class opc_base extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
      */
-    public opc_home() {
+    public opc_base() {
         initComponents();
     }
 
@@ -25,7 +25,6 @@ public class opc_home extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jl_text2 = new javax.swing.JLabel();
         jl_text1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jl_copyrigth = new javax.swing.JLabel();
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -39,9 +38,6 @@ public class opc_home extends javax.swing.JPanel {
         jl_text1.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
         jl_text1.setText("¡Hola, Edinson! ¿En qué podemos ayudarte hoy?");
         jPanel3.add(jl_text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 40, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC-552X220px.png"))); // NOI18N
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 243, -1, -1));
 
         jl_copyrigth.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jl_copyrigth.setText("© 2024  Todos los derechos reservados.");
@@ -61,7 +57,6 @@ public class opc_home extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel jl_copyrigth;
     private javax.swing.JLabel jl_text1;

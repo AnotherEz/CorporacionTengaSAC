@@ -1,5 +1,9 @@
-package GIU.VendedorCajero;
+package GIU;
 
+import GIU.VendedorCajero.opc_home;
+import GIU.VendedorCajero.opc_home;
+import GIU.VendedorCajero.opc_venta;
+import GIU.VendedorCajero.opc_venta;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Point;
@@ -8,7 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 
-public class PanelVendedorPrincipal extends javax.swing.JFrame {
+public class PanelPrincipal extends javax.swing.JFrame {
     private final CardLayout cardLayout;
     private Timer slideTimer;
     private boolean isMenuVisible=true;
@@ -17,7 +21,7 @@ public class PanelVendedorPrincipal extends javax.swing.JFrame {
     opc_home opc_home = new opc_home();
     opc_venta opc_venta = new opc_venta();
     private Point initialClick;
-    public PanelVendedorPrincipal() {
+    public PanelPrincipal() {
         initComponents();
 
     // Inicializa el CardLayout
@@ -527,21 +531,22 @@ private void toggleMenu() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PanelVendedorPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PanelPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PanelVendedorPrincipal().setVisible(true);
+                new PanelPrincipal().setVisible(true);
             }
         });
     }
