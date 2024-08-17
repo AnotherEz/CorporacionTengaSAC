@@ -29,11 +29,14 @@ public class PanelVendedorPrincipal extends javax.swing.JFrame {
     // Agrega los paneles al panel_opcionseleccionada
     panel_opcionseleccionada.add(opc_home, "Panel 1");
     panel_opcionseleccionada.add(opc_venta, "Panel 2");
-
+    cambiarPanel("Panel 1");
     // Establece el panel inicial a mostrar
-    cardLayout.show(panel_opcionseleccionada, "Panel 1");
+   // cardLayout.show(panel_opcionseleccionada, "Panel 1");
     }
 private void cambiarPanel(String nombrePanel) {
+        toggleMenu();
+        panel_opciones.revalidate();
+        panel_opciones.repaint();
     cardLayout.show(panel_opcionseleccionada, nombrePanel);
 }
 private void toggleMenu() {
@@ -338,7 +341,7 @@ private void toggleMenu() {
         panel_opcionseleccionada.setBackground(new java.awt.Color(255, 255, 255));
         panel_opcionseleccionada.setPreferredSize(new java.awt.Dimension(868, 660));
         panel_opcionseleccionada.setLayout(new java.awt.CardLayout());
-        jPanel1.add(panel_opcionseleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(282, 40, -1, -1));
+        jPanel1.add(panel_opcionseleccionada, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -412,7 +415,6 @@ private void toggleMenu() {
         // TODO add your handling code here:
         
         toggleMenu();
-        
         panel_opciones.revalidate();
         panel_opciones.repaint();
     }//GEN-LAST:event_boton_menuMouseClicked
@@ -484,7 +486,7 @@ private void toggleMenu() {
     }//GEN-LAST:event_btn_consultar_ventaMouseExited
 
     private void btn_crear_nueva_ventaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crear_nueva_ventaMouseClicked
-       
+   
         cambiarPanel("Panel 2");
     }//GEN-LAST:event_btn_crear_nueva_ventaMouseClicked
 
@@ -506,7 +508,6 @@ private void toggleMenu() {
 
     private void btn_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_homeMouseClicked
         // TODO add your handling code here:
-        
         cambiarPanel("Panel 1");
       
     }//GEN-LAST:event_btn_homeMouseClicked
