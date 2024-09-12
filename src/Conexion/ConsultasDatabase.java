@@ -1,3 +1,4 @@
+
 package Conexion;
 
 import java.sql.Connection;
@@ -47,24 +48,42 @@ public class ConsultasDatabase {
     }
 
     public String obtenerNombreCompletoPorUsername(String username) {
-        String query = "SELECT nombres, firstLastName, secondLastName FROM trabajadores WHERE username = ?";
-        try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-             
-            preparedStatement.setString(1, username);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            
-            if (resultSet.next()) {
-                String nombres = resultSet.getString("nombres");
-                String firstLastName = resultSet.getString("firstLastName");
-                String secondLastName = resultSet.getString("secondLastName");
-                return nombres + " " + firstLastName + " " + secondLastName;
-            } else {
-                return null; // No se encontró el usuario
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
+    String query = "SELECT nombres, firstLastName, secondLastName FROM trabajadores WHERE username = ?";
+    System.out.println("Iniciando consulta para el username: " + username);
+    
+    try (Connection connection = DatabaseConnection.getConnection();
+         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        
+        System.out.println("Conexión establecida y PreparedStatement creado.");
+        
+        preparedStatement.setString(1, username);
+        System.out.println("Query preparada: " + preparedStatement.toString());
+        
+        ResultSet resultSet = preparedStatement.executeQuery();
+        System.out.println("Consulta ejecutada.");
+        
+        if (resultSet.next()) {
+            String nombres = resultSet.getString("nombres");
+            String firstLastName = resultSet.getString("firstLastName");
+            String secondLastName = resultSet.getString("secondLastName");
+            String nombreCompleto = nombres + " " + firstLastName + " " + secondLastName;
+            System.out.println("Usuario encontrado. Nombre completo: " + nombreCompleto);
+            return nombreCompleto;
+        } else {
+            System.out.println("No se encontró ningún usuario con el username: " + username);
+            return null; // No se encontró el usuario
         }
+    } catch (SQLException e) {
+        System.err.println("Error SQL en la consulta:");
+        e.printStackTrace();
+        return null;
+    } catch (Exception e) {
+        System.err.println("Error inesperado en la consulta:");
+        e.printStackTrace();
+        return null;
+    } finally {
+        System.out.println("Consulta finalizada.");
+    }
+
     }
 }

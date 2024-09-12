@@ -386,7 +386,7 @@ public class Login extends javax.swing.JFrame {
                 break;
                  case "Vendedor":
                 // Acción para Vendedor
-                new PanelVendedorPrincipal().setVisible(true);
+                new PanelVendedorPrincipal(tf_user.getText()).setVisible(true);
                  break;
                  default:
                 

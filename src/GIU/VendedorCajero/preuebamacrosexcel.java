@@ -1,5 +1,5 @@
 package GIU.VendedorCajero;
-import Conexion.ConsultasDatabase;
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Point;
@@ -8,9 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 
-public class PanelVendedorPrincipal extends javax.swing.JFrame {
-    ConsultasDatabase consult=new ConsultasDatabase();
-    String username;
+public class preuebamacrosexcel extends javax.swing.JFrame {
     private final CardLayout cardLayout;
     private Timer slideTimer;
     private boolean isMenuVisible=true;
@@ -21,8 +19,7 @@ public class PanelVendedorPrincipal extends javax.swing.JFrame {
     opc_aperturar_caja opc_aperturar_caja = new opc_aperturar_caja();
     opc_consultar_venta opc_consultar_venta = new opc_consultar_venta();
     private Point initialClick;
-    public PanelVendedorPrincipal(String user) {
-        this.username=user;
+    public preuebamacrosexcel() {
         initComponents();
 
     // Inicializa el CardLayout
@@ -38,8 +35,6 @@ public class PanelVendedorPrincipal extends javax.swing.JFrame {
     panel_opcionseleccionada.add(opc_consultar_venta, "Panel 4");
     cambiarPanel("Panel 1");
     }
-
-   
 private void cambiarPanel(String nombrePanel) {
         toggleMenu();
         panel_opciones.revalidate();
@@ -99,10 +94,9 @@ private void toggleMenu() {
         btn_realizar_cierre_de_caja = new javax.swing.JLabel();
         btn_crear_nueva_venta = new javax.swing.JLabel();
         btn_consultar_venta = new javax.swing.JLabel();
-        cargo_user = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         btn_home = new javax.swing.JLabel();
-        name_user = new javax.swing.JLabel();
         panel_opcionseleccionada = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -315,12 +309,11 @@ private void toggleMenu() {
         });
         panel_opciones.add(btn_consultar_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
 
-        cargo_user.setFont(new java.awt.Font("Source Code Pro Black", 0, 16)); // NOI18N
-        cargo_user.setForeground(new java.awt.Color(255, 255, 255));
-        cargo_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cargo_user.setText("Cargo: "+consult.obtenerCargoOcupadoPorUsername(username)
-        );
-        panel_opciones.add(cargo_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 260, -1));
+        jLabel14.setFont(new java.awt.Font("Source Code Pro Black", 0, 16)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Edinson Fernandez Flores");
+        panel_opciones.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 250, -1));
 
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator3.setPreferredSize(new java.awt.Dimension(260, 3));
@@ -350,13 +343,6 @@ private void toggleMenu() {
             }
         });
         panel_opciones.add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-
-        name_user.setFont(new java.awt.Font("Source Code Pro Black", 0, 16)); // NOI18N
-        name_user.setForeground(new java.awt.Color(255, 255, 255));
-        name_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        name_user.setText(consult.obtenerNombreCompletoPorUsername(username)
-        );
-        panel_opciones.add(name_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 260, -1));
 
         jPanel1.add(panel_opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
@@ -544,9 +530,42 @@ private void toggleMenu() {
         cambiarPanel("Panel 4");
     }//GEN-LAST:event_btn_consultar_ventaMouseClicked
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(preuebamacrosexcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(preuebamacrosexcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(preuebamacrosexcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(preuebamacrosexcel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+       
 
-
-    
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new preuebamacrosexcel().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel boton_menu;
@@ -556,12 +575,11 @@ private void toggleMenu() {
     private javax.swing.JLabel btn_flujo_de_caja;
     private javax.swing.JLabel btn_home;
     private javax.swing.JLabel btn_realizar_cierre_de_caja;
-    private javax.swing.JLabel cargo_user;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel jl_BotonX;
-    private javax.swing.JLabel name_user;
     private javax.swing.JPanel panel_opciones;
     private javax.swing.JPanel panel_opcionseleccionada;
     private javax.swing.JPanel panel_superior;
