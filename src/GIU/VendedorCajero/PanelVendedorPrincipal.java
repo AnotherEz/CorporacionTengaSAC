@@ -1,5 +1,7 @@
 package GIU.VendedorCajero;
+import Clases.Trabajador;
 import Conexion.ConsultasDatabase;
+import GIU.Login;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Point;
@@ -9,20 +11,23 @@ import javax.swing.Timer;
 
 
 public class PanelVendedorPrincipal extends javax.swing.JFrame {
-    ConsultasDatabase consult=new ConsultasDatabase();
-    String username;
+    private Trabajador usuario=new Trabajador();
+    opc_home opc_home;
+    private ConsultasDatabase consult=new ConsultasDatabase();
     private final CardLayout cardLayout;
     private Timer slideTimer;
     private boolean isMenuVisible=true;
     private final int panelWidth=282;
     private boolean isAnimating = false;
-    opc_home opc_home = new opc_home();
     opc_venta opc_venta = new opc_venta();
     opc_aperturar_caja opc_aperturar_caja = new opc_aperturar_caja();
     opc_consultar_venta opc_consultar_venta = new opc_consultar_venta();
+    opc_cerrar_caja opc_cerrar_caja= new opc_cerrar_caja();
+    opc_flujo_de_caja opc_flujo_de_caja=new opc_flujo_de_caja();
     private Point initialClick;
     public PanelVendedorPrincipal(String user) {
-        this.username=user;
+        consult.obtenerDatosPorUsername(user,usuario);
+        opc_home = new opc_home(usuario);
         initComponents();
 
     // Inicializa el CardLayout
@@ -36,6 +41,9 @@ public class PanelVendedorPrincipal extends javax.swing.JFrame {
     panel_opcionseleccionada.add(opc_venta, "Panel 2");
     panel_opcionseleccionada.add(opc_aperturar_caja, "Panel 3");
     panel_opcionseleccionada.add(opc_consultar_venta, "Panel 4");
+    panel_opcionseleccionada.add(opc_cerrar_caja, "Panel 5");
+    panel_opcionseleccionada.add(opc_flujo_de_caja, "Panel 6");
+    
     cambiarPanel("Panel 1");
     }
 
@@ -103,6 +111,7 @@ private void toggleMenu() {
         jSeparator3 = new javax.swing.JSeparator();
         btn_home = new javax.swing.JLabel();
         name_user = new javax.swing.JLabel();
+        btn_cerrar_sesion = new javax.swing.JLabel();
         panel_opcionseleccionada = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -221,6 +230,9 @@ private void toggleMenu() {
         btn_flujo_de_caja.setOpaque(true);
         btn_flujo_de_caja.setPreferredSize(new java.awt.Dimension(262, 43));
         btn_flujo_de_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_flujo_de_cajaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_flujo_de_cajaMouseEntered(evt);
             }
@@ -262,6 +274,9 @@ private void toggleMenu() {
         btn_realizar_cierre_de_caja.setOpaque(true);
         btn_realizar_cierre_de_caja.setPreferredSize(new java.awt.Dimension(262, 43));
         btn_realizar_cierre_de_caja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_realizar_cierre_de_cajaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_realizar_cierre_de_cajaMouseEntered(evt);
             }
@@ -315,10 +330,10 @@ private void toggleMenu() {
         });
         panel_opciones.add(btn_consultar_venta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, -1));
 
-        cargo_user.setFont(new java.awt.Font("Source Code Pro Black", 0, 16)); // NOI18N
+        cargo_user.setFont(new java.awt.Font("Source Code Pro Black", 0, 14)); // NOI18N
         cargo_user.setForeground(new java.awt.Color(255, 255, 255));
         cargo_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cargo_user.setText("Cargo: "+consult.obtenerCargoOcupadoPorUsername(username)
+        cargo_user.setText("Cargo: "+usuario.getCargo()
         );
         panel_opciones.add(cargo_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 260, -1));
 
@@ -351,12 +366,33 @@ private void toggleMenu() {
         });
         panel_opciones.add(btn_home, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
-        name_user.setFont(new java.awt.Font("Source Code Pro Black", 0, 16)); // NOI18N
+        name_user.setFont(new java.awt.Font("Source Code Pro Black", 0, 14)); // NOI18N
         name_user.setForeground(new java.awt.Color(255, 255, 255));
         name_user.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        name_user.setText(consult.obtenerNombreCompletoPorUsername(username)
-        );
+        name_user.setText(usuario.getNombreCompleto());
         panel_opciones.add(name_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 260, -1));
+
+        btn_cerrar_sesion.setBackground(new java.awt.Color(17, 141, 192));
+        btn_cerrar_sesion.setFont(new java.awt.Font("Roboto Medium", 1, 16)); // NOI18N
+        btn_cerrar_sesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_cerrar_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/CerrarSesion_20x20.png"))); // NOI18N
+        btn_cerrar_sesion.setText("           Cerrar sesion");
+        btn_cerrar_sesion.setMaximumSize(new java.awt.Dimension(43, 20));
+        btn_cerrar_sesion.setMinimumSize(new java.awt.Dimension(43, 20));
+        btn_cerrar_sesion.setOpaque(true);
+        btn_cerrar_sesion.setPreferredSize(new java.awt.Dimension(262, 43));
+        btn_cerrar_sesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cerrar_sesionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_cerrar_sesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_cerrar_sesionMouseExited(evt);
+            }
+        });
+        panel_opciones.add(btn_cerrar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, -1, -1));
 
         jPanel1.add(panel_opciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
@@ -425,12 +461,7 @@ private void toggleMenu() {
     }//GEN-LAST:event_jl_BotonXFocusGained
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        // TODO add your handling code here:
-      //  PanelMenuPop.remove(pop_vendedor_menu);
-        //PanelPopVendedor.setVisible(true);
-        //Contenedor_PanelMenuPop.revalidate();
-       // Contenedor_PanelMenuPop.repaint();
-       //Contenedor_PanelMenuPop.setPreferredSize(originalSize);
+        
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void boton_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_menuMouseClicked
@@ -544,6 +575,38 @@ private void toggleMenu() {
         cambiarPanel("Panel 4");
     }//GEN-LAST:event_btn_consultar_ventaMouseClicked
 
+    private void btn_flujo_de_cajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_flujo_de_cajaMouseClicked
+        cambiarPanel("Panel 6");
+    }//GEN-LAST:event_btn_flujo_de_cajaMouseClicked
+
+    private void btn_realizar_cierre_de_cajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_realizar_cierre_de_cajaMouseClicked
+        cambiarPanel("Panel 5");
+    }//GEN-LAST:event_btn_realizar_cierre_de_cajaMouseClicked
+
+    private void btn_cerrar_sesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionMouseEntered
+
+        btn_cerrar_sesion.setBackground(new Color(6,199,242));
+
+        btn_cerrar_sesion.setForeground(Color.WHITE);        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cerrar_sesionMouseEntered
+
+    private void btn_cerrar_sesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionMouseExited
+        btn_cerrar_sesion.setBackground(new Color(17,141,192));
+        btn_cerrar_sesion.setForeground(Color.BLACK);        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cerrar_sesionMouseExited
+
+    private void btn_cerrar_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionMouseClicked
+         dispose();
+         try {
+        System.out.println("Iniciando aplicación...");
+        new Login().setVisible(true);
+                
+    } catch (Exception e) {
+        System.err.println("Error al iniciar la aplicación:");
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_btn_cerrar_sesionMouseClicked
+
 
 
     
@@ -551,6 +614,7 @@ private void toggleMenu() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel boton_menu;
     private javax.swing.JLabel btn_apertura_de_caja;
+    private javax.swing.JLabel btn_cerrar_sesion;
     private javax.swing.JLabel btn_consultar_venta;
     private javax.swing.JLabel btn_crear_nueva_venta;
     private javax.swing.JLabel btn_flujo_de_caja;

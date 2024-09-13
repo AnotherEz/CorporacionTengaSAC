@@ -63,16 +63,4 @@ public class TokenManager {
         }
     }
 
-    // Ejemplo de uso
-    public static void main(String[] args) {
-        TokenManager tokenManager = new TokenManager(100); // Cambiar token cada 100 consultas
-        tokenManager.agregarToken("token1");
-        tokenManager.agregarToken("token2");
-        tokenManager.agregarToken("token3");
-
-        for (int i = 0; i < 570; i++) {
-            System.out.println("Consulta " + (i + 1) + ": " + tokenManager.getTokenActual());
-            tokenManager.incrementarContador();
-        }
-    }
 }

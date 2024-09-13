@@ -1,4 +1,5 @@
 package Clases;
+
 public class Usuario {
     String DNI;
     int codigoVerificacion;
@@ -8,34 +9,32 @@ public class Usuario {
     String firstLastName;
     String secondLastName;
     String nombreCompleto;
-    public Usuario(){
-    }
-    
-    
-    
-    
-    public String getNombreCompleto(){
-        return nombres+" "+firstLastName+" "+secondLastName;
-    }
-    
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+
+    public Usuario() {
     }
 
-     public String getDNI() {
+    public String getNombreCompleto() {
+        return nombres + " " + firstLastName + " " + secondLastName;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = stringPropio(nombreCompleto);
+    }
+
+    public String getDNI() {
         return DNI;
     }
 
     public void setDNI(String DNI) {
-        this.DNI = DNI;
+        this.DNI = stringPropio(DNI);
     }
-     
-     public String getFirstName() {
+
+    public String getFirstName() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = stringPropio(firstName);
     }
 
     public String getSecondName() {
@@ -43,23 +42,27 @@ public class Usuario {
     }
 
     public void setSecondName(String secondName) {
-        this.secondName = secondName;
+        this.secondName = stringPropio(secondName);
     }
 
     public String getNombres() {
         return nombres;
     }
 
-    public void setNombres(String secondName) {
-        this.nombres = secondName;
+    public void setNombres(String nombres) {
+        this.nombres = stringPropio(nombres);
+        // Asignar el primer nombre y el resto de la cadena formateados
+        String[] nombresSeparados = separarNombres(nombres);
+        this.firstName = stringPropio(nombresSeparados[0]);
+        this.secondName = stringPropio(nombresSeparados[1]);
     }
-    
+
     public String getFirstLastName() {
         return firstLastName;
     }
 
     public void setFirstLastName(String firstLastName) {
-        this.firstLastName = firstLastName;
+        this.firstLastName = stringPropio(firstLastName);
     }
 
     public String getSecondLastName() {
@@ -67,7 +70,7 @@ public class Usuario {
     }
 
     public void setSecondLastName(String secondLastName) {
-        this.secondLastName = secondLastName;
+        this.secondLastName = stringPropio(secondLastName);
     }
 
     public int getCodigoVerificacion() {
@@ -77,23 +80,37 @@ public class Usuario {
     public void setCodigoVerificacion(int codigoVerificacion) {
         this.codigoVerificacion = codigoVerificacion;
     }
-    
-    
-    
-    
-    public static String[] NombresSeparados(String nombres) {
-    if (nombres == null || nombres.isEmpty()) {
-        return null;
+
+    // Método que separa el primer nombre y el resto de la cadena
+    public static String[] separarNombres(String nombres) {
+        if (nombres == null || nombres.isEmpty()) {
+            return new String[]{"", ""};
+        }
+
+        String[] partes = nombres.split(" ", 2); // Separa en dos partes máximo
+        String primerNombre = partes[0];
+        String restoNombres = partes.length > 1 ? partes[1] : "";
+
+        return new String[]{primerNombre, restoNombres};
     }
 
-    String[] partes = nombres.split(" ");
-    if (partes.length == 1) {
-        return new String[]{partes[0], ""};
-    } else if (partes.length == 2) {
-        return partes;
-    } else {
-        return new String[]{"null", "null"}; // La cadena contiene más de dos palabras
-    }
-}
+    // Método para formatear una cadena: primera letra de cada palabra en mayúscula
+    public static String stringPropio(String texto) {
+        if (texto == null || texto.isEmpty()) {
+            return "";
+        }
 
+        String[] palabras = texto.toLowerCase().split(" ");
+        StringBuilder textoFormateado = new StringBuilder();
+
+        for (String palabra : palabras) {
+            if (palabra.length() > 0) {
+                textoFormateado.append(Character.toUpperCase(palabra.charAt(0)))
+                               .append(palabra.substring(1))
+                               .append(" ");
+            }
+        }
+
+        return textoFormateado.toString().trim();
+    }
 }

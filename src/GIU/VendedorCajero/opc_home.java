@@ -4,16 +4,21 @@
  */
 package GIU.VendedorCajero;
 
+import Clases.Trabajador;
+import Conexion.ConsultasDatabase;
+
 /**
  *
  * @author Eduardo Fernandez
  */
 public class opc_home extends javax.swing.JPanel {
-
+    private Trabajador usuario=new Trabajador();
+    ConsultasDatabase  consult=new ConsultasDatabase();
     /**
      * Creates new form NewJPanel
      */
-    public opc_home() {
+    public opc_home(Trabajador user1) {
+        consult.obtenerDatosPorUsername(user1.getUserName(), usuario);
         initComponents();
     }
 
@@ -37,7 +42,7 @@ public class opc_home extends javax.swing.JPanel {
         jPanel3.add(jl_text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 101, -1, -1));
 
         jl_text1.setFont(new java.awt.Font("Roboto Black", 0, 36)); // NOI18N
-        jl_text1.setText("¡Hola, Edinson! ¿En qué podemos ayudarte hoy?");
+        jl_text1.setText("¡Hola, "+usuario.getFirstName()+"! ¿En qué podemos ayudarte hoy?");
         jPanel3.add(jl_text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logotipo_TengaSAC-552X220px.png"))); // NOI18N

@@ -1,7 +1,7 @@
 package GIU;
 import Conexion.ConsultasDatabase;
-import GIU.Admi.PanelAdministrador;
-import GIU.Almacenero.PanelAlmacenero;
+import GIU.Admi.PanelAdministradorPrincipal;
+import GIU.Almacenero.PanelAlmaceneroPrincipal;
 import GIU.VendedorCajero.PanelVendedorPrincipal;
 import java.awt.Color;
 import java.awt.Point;
@@ -371,18 +371,20 @@ public class Login extends javax.swing.JFrame {
                 String password = new String(tf_pass.getPassword());
 
                 if (authService.authenticate(username, password)) {
-                    JOptionPane.showMessageDialog(null, "Login exitoso");
+                    new LoginExitoso().setVisible(true);
+      
                     Cargo = consulta.obtenerCargoOcupadoPorUsername(username);
+                    
                     switch (Cargo) {
                 case "Administrador":
                 // Acción para Administrador
-                new PanelAdministrador().setVisible(true);
+                new PanelAdministradorPrincipal(tf_user.getText()).setVisible(true);
                 
                  break;
         
                  case "Almacenero":
                 // Acción para Cajero
-                new PanelAlmacenero().setVisible(true);
+                new PanelAlmaceneroPrincipal(tf_user.getText()).setVisible(true);
                 break;
                  case "Vendedor":
                 // Acción para Vendedor
@@ -396,6 +398,7 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     Texto_autenticacion.setForeground(Color.red);
                     Texto_autenticacion.setText("Usuario o contraseña incorrectos");
+                    new LoginFallido().setVisible(true);
                 }
                 //condicion para segun el rol de usuario se mostrara su panel correspondiente
                      // TODO add your handling code here:
@@ -453,14 +456,16 @@ public class Login extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_chk_mostrarPassItemStateChanged
 
-    public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
+   public static void main(String[] args) {
+    try {
+        System.out.println("Iniciando aplicación...");
+        new Login().setVisible(true);
+                
+    } catch (Exception e) {
+        System.err.println("Error al iniciar la aplicación:");
+        e.printStackTrace();
     }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Icon_Logo_head;

@@ -1,5 +1,7 @@
 package Clases;
 public class Trabajador extends Usuario {
+    String username;
+    String pass;
     String cargo;
     String fechaIngreso;
     float sueldoBasico;
@@ -18,6 +20,12 @@ public Trabajador(){
     private float calcularAsignacionFamiliar() {
         // Ejemplo: 10% del sueldo básico
         return sueldoBasico * 0.10f;
+    }
+     public String getUserName() {
+        return username;
+    }
+    public void setUserName(String usernam) {
+        this.username = usernam;
     }
      public String getCargo() {
         return cargo;

@@ -1,6 +1,7 @@
 
 package Conexion;
 
+import Clases.Trabajador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,43 +48,62 @@ public class ConsultasDatabase {
         }
     }
 
-    public String obtenerNombreCompletoPorUsername(String username) {
-    String query = "SELECT nombres, firstLastName, secondLastName FROM trabajadores WHERE username = ?";
+    public void obtenerDatosPorUsername(String username, Trabajador usuario) {
+    // Verifica si 'usuario' es null y si lo es, inicialízalo
+    if (usuario == null) {
+        usuario = new Trabajador();
+    }
+
+    String query = "SELECT nombres, firstLastName, secondLastName, cargoOcupado FROM trabajadores WHERE username = ?";
     System.out.println("Iniciando consulta para el username: " + username);
-    
+
     try (Connection connection = DatabaseConnection.getConnection();
          PreparedStatement preparedStatement = connection.prepareStatement(query)) {
         
         System.out.println("Conexión establecida y PreparedStatement creado.");
         
+        // Establecer el valor del parámetro en la consulta
         preparedStatement.setString(1, username);
         System.out.println("Query preparada: " + preparedStatement.toString());
         
+        // Ejecutar la consulta
         ResultSet resultSet = preparedStatement.executeQuery();
         System.out.println("Consulta ejecutada.");
         
+        // Procesar el resultado de la consulta
         if (resultSet.next()) {
             String nombres = resultSet.getString("nombres");
+            usuario.setNombres(nombres);
+
             String firstLastName = resultSet.getString("firstLastName");
+            usuario.setFirstLastName(firstLastName);
+
             String secondLastName = resultSet.getString("secondLastName");
+            usuario.setSecondLastName(secondLastName);
+            
+            String cargo = resultSet.getString("cargoOcupado");
+            usuario.setCargo(cargo);
+
+            // Formar el nombre completo
             String nombreCompleto = nombres + " " + firstLastName + " " + secondLastName;
+            usuario.setNombreCompleto(nombreCompleto);
+            
+            usuario.setUserName(username);
             System.out.println("Usuario encontrado. Nombre completo: " + nombreCompleto);
-            return nombreCompleto;
         } else {
             System.out.println("No se encontró ningún usuario con el username: " + username);
-            return null; // No se encontró el usuario
         }
     } catch (SQLException e) {
         System.err.println("Error SQL en la consulta:");
         e.printStackTrace();
-        return null;
     } catch (Exception e) {
         System.err.println("Error inesperado en la consulta:");
         e.printStackTrace();
-        return null;
     } finally {
         System.out.println("Consulta finalizada.");
     }
+}
 
-    }
+
+
 }
